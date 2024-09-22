@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ Values.name }}
+  name: {{ .Values.name }}
   labels:
-    app: {{ Values.app }}
-    chart: {{ Values.chart }}
+    app: {{ .Values.app }}
+    chart: {{ .Values.chart }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
@@ -12,12 +12,12 @@ spec:
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: {{ Values.app }}
+      app: {{ .Values.app }}
       release: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: {{ Values.app }}
+        app: {{ .Values.app }}
         release: {{ .Release.Name }}
     spec:
       containers:
